@@ -40,7 +40,8 @@ def metric_users(message):
 	cursor.execute("SELECT Username, COUNT(UserID) FROM chat_log GROUP BY UserID")
 	result = cursor.fetchall()
 	for x in result:
-		bot.reply_to(message, x)
+		print(x)
+	bot.reply_to(message, 'test manu')
 
 @bot.message_handler(content_types=['text'])
 def store_chat(message):

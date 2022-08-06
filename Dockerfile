@@ -5,6 +5,9 @@ WORKDIR /app
 # Ejecución de comandos
 RUN pip3 install pyTelegramBotAPI mysql-connector-python
 # Copia ficheros en la imagen del contenedor
-COPY adobobot.py .
-# Comandos que se ejecutan al arrancar el contenedor"
-CMD [ "python3", "adobobot.py"]
+COPY ./src/adobobot.py .
+
+# Copy entrypoint and set permissions
+COPY ./docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
